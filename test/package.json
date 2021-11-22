@@ -1,0 +1,15 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "jsdom": "^18.1.0",
+    "jsdom-global": "3.0.2"
+  },
+  "dependencies": {
+    "@types/node": "^16.11.7",
+    "nodom": "^2.4.0",
+    "redom": "^3.27.1"
+  }
+}

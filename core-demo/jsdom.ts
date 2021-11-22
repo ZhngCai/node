@@ -14,8 +14,6 @@ const jsWindow = new JSDOM(`<!DOCTYPE html>
 </html>`).window;
 const jsDocument = jsWindow.document;
 
-
-
 export {
     jsWindow,
     jsDocument

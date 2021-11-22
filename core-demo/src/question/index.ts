@@ -35,20 +35,23 @@ class Question {
     }
     // 获得选项
     getInquirerJson(data:CFQuestion):IInquirerJson | undefined{
+        
         let prev = ''
         if(data.prev){
             prev = QTip.pre+','
         }
+        const subQuest = <CFSubjectQuestion>data;
         switch (data.type) {
             case NODE_TYPE.FILL:
+                console.log(subQuest.options[0].text);
+                
                 return {
                     type:'input',
-                    message:`${data.title}\n(${QTip.quit},${prev}${QTip.next})`,
+                    message:`${subQuest.title}\n${subQuest.options[0].text}\n(${QTip.quit},${prev}${QTip.next})`,
                     name:'answer',
                 }
             case NODE_TYPE.SELECT:
                 let optionMessage = '\n';
-                const subQuest = <CFSubjectQuestion>data;
                 subQuest.options.forEach((res:CFOption,index:number)=>{
                     optionMessage+= index+') '+res.text +'\n'
                 })
@@ -85,6 +88,7 @@ class Question {
 
     // 处理答案
     async dealAnswer(answer:string,quest:CFSubjectQuestion,type:NODE_TYPE){
+      
         const dealResult = await this.dealTipAnswer(answer,quest)
         if(!dealResult.status){
             console.log(`============${dealResult.message}============`);
